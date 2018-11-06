@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <!-- <link rel="stylesheet" type="text/css" href="tabel.css"> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+     table,th, td{
+            background:green;
+            border: 1px solid rgb(0, 0, 0);
+            border-collapse: collapse;
+            text-align: center;
+            color: black;
+            }      
+</style>
+<body>
+        <!-- <div class="wrapper">
+                <p class="text1">Welcome!!!</p>
+                <p class="text2">Guys!!!</p>
+              </div> -->
+      <div class="allinput">        
+    <center>Nama <input id="name" type="text"  placeholder="Ketik Nama...">   
+            Tanggal Lahir <input id="tanggallahir" type="date"  placeholder="Ketik Usia...">
+            Kota <input id="city" type="text"  placeholder="Ketik Kota...">
+        <br>
+        <br>
+        <button onclick="data()">DAFTAR</button>
+        <br><br>
+        <!-- <button id="res" onclick="reset()">Reset</button>
+        <button id="delete" type="submit" onclick="hapusdata()">Delete</button>
+        <br> -->
+    <center></center><button onclick="sortumur1()">Sort Umur Ascending</button>
+        <button onclick="sortumur2()">Sort Umur Descending</button>
+        <button onclick="sortnama1()">Sort Nama Ascending</button>
+        <button onclick="sortnama2()">Sort Nama Descending</button>
+        <button onclick="sortkota1()">Sort Kota Ascending</button>
+        <button onclick="sortkota2()">Sort Kota Descending</button></center></div>
+        <br>
+       <!-- <center> <input id="i" type="button" onclick="hapusdata()" value="Delete"></center> -->
+
+          
+    
+    
+       
+
+        <center><table id="mytabel">
+                <thead id="thead"></thead>
+                <tbody id="tbody">
+                  
+                </tbody>
+                
+                <br>
+                <br>
+</body>
+<script>
+     var users = []
+
+
+ 
+    var namabulan = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"]
+    
+//     function reset(){
+//         document.getElementById('tbody').innerHTML= '';
+//         document.getElementById('thead').innerHTML= '';
+//         users = [];
+// }
+
+    function hapusdata(){
+        // document.getElementById('tbody').innerHTML= '';
+        // document.getElementById("tbody").innerHTML='';
+        document.getElementById("tbody").deleteRow(i);
+       
+        // document.getElementById('thead').innerHTML= '';
+        // users = [];
+        // hapus per rows
+}
+
+ function sortkota1(){
+        document.getElementById('tbody').innerHTML= '';
+        for(var i=0; i<users.length; i++){
+            users.sort(function(a,b){
+              if(a.kota==b.kota){
+                  return 0;
+              }  
+              else if(a.kota<b.kota){
+                  return -1;
+              }
+              else{
+                  return 0;
+              }
+            })
+            document.getElementById("tbody").innerHTML += '<tr><th>'+users[i].nama+'</th><th>'+ users[i].tanggal+'</th><th>'+users[i].bulan+'</th><th>'+ users[i].tanggallahir+'</th><th>'+users[i].zodiak()+'</th><th>'+ users[i].usia+'</th><th>'+users[i].pensiun+'</th><th>'+ users[i].kota+'</th><th>'+'<input id="i" type="button" onclick="hapusdata()" value="Delete">'   
+        }
+    }
+
+    function sortkota2(){
+        document.getElementById('tbody').innerHTML= '';
+        for(var i=0; i<users.length; i++){
+            users.sort(function(c,d){
+              if(c.kota==d.kota){
+                  return 0;
+              }  
+              else if(c.kota<d.kota){
+                  return 1;
+              }
+              else{
+                  return -1;
+              }
+            })
+            document.getElementById("tbody").innerHTML += '<tr><th>'+users[i].nama+'</th><th>'+ users[i].tanggal+'</th><th>'+users[i].bulan+'</th><th>'+ users[i].tanggallahir+'</th><th>'+users[i].zodiak()+'</th><th>'+ users[i].usia+'</th><th>'+users[i].pensiun+'</th><th>'+ users[i].kota+'</th><th>'+'<input id="i" type="button" onclick="hapusdata()" value="Delete">'  
+        }
+    }
+    
+
+
+
+    function sortnama1(){
+        document.getElementById('tbody').innerHTML= '';
+        for(var i=0; i<users.length; i++){
+            users.sort(function(a,b){
+              if(a.nama==b.nama){
+                  return 0;
+              }  
+              else if(a.nama<b.nama){
+                  return -1;
+              }
+              else{
+                  return 0;
+              }
+            })
+            document.getElementById("tbody").innerHTML += '<tr><th>'+users[i].nama+'</th><th>'+ users[i].tanggal+'</th><th>'+users[i].bulan+'</th><th>'+ users[i].tanggallahir+'</th><th>'+users[i].zodiak()+'</th><th>'+ users[i].usia+'</th><th>'+users[i].pensiun+'</th><th>'+ users[i].kota+'</th><th>'+'<input id="i" type="button" onclick="hapusdata()" value="Delete">'   
+        }
+    }
+
+    function sortnama2(){
+        document.getElementById('tbody').innerHTML= '';
+        for(var i=0; i<users.length; i++){
+            users.sort(function(c,d){
+              if(c.nama==d.nama){
+                  return 0;
+              }  
+              else if(c.nama<d.nama){
+                  return 1;
+              }
+              else{
+                  return -1;
+              }
+            })
+            document.getElementById("tbody").innerHTML += '<tr><th>'+users[i].nama+'</th><th>'+ users[i].tanggal+'</th><th>'+users[i].bulan+'</th><th>'+ users[i].tanggallahir+'</th><th>'+users[i].zodiak()+'</th><th>'+ users[i].usia+'</th><th>'+users[i].pensiun+'</th><th>'+ users[i].kota+'</th><th>'+'<input id="i" type="button" onclick="hapusdata()" value="Delete">' 
+        }
+    }
+
+    function sortumur1(){
+        document.getElementById("tbody").innerHTML = '';
+        for(var i=0; i<users.length; i++){
+            users.sort(function(a,b){
+            return a.usia - b.usia
+            })
+            document.getElementById("tbody").innerHTML += '<tr><th>'+users[i].nama+'</th><th>'+ users[i].tanggal+'</th><th>'+users[i].bulan+'</th><th>'+ users[i].tanggallahir+'</th><th>'+users[i].zodiak()+'</th><th>'+ users[i].usia+'</th><th>'+users[i].pensiun+'</th><th>'+ users[i].kota+'</th><th>'+'<input id="i" type="button" onclick="hapusdata()" value="Delete">'  
+        } 
+    }
+
+    function sortumur2(){
+        document.getElementById("tbody").innerHTML='';
+        for (var i=0; i<users.length; i++){
+            users.sort(function(c,d){
+            return d.usia - c.usia    
+            })
+            document.getElementById("tbody").innerHTML += '<tr><th>'+users[i].nama+'</th><th>'+ users[i].tanggal+'</th><th>'+users[i].bulan+'</th><th>'+ users[i].tanggallahir+'</th><th>'+users[i].zodiak()+'</th><th>'+ users[i].usia+'</th><th>'+users[i].pensiun+'</th><th>'+ users[i].kota+'</th><th>'+'<input id="i" type="button" onclick="hapusdata()" value="Delete">'   
+        }
+    }
+
+    function data(){
+       
+        
+        var datauser = {
+            nama: document.getElementById("name").value,
+            tanggallahir: document.getElementById("tanggallahir").value.slice(0,4),
+            bulan: namabulan[parseInt(document.getElementById("tanggallahir").value.slice(5,7)-1)],
+            tanggal: document.getElementById("tanggallahir").value.slice(8,10),
+            usia: 2018 - document.getElementById("tanggallahir").value.slice(0,4),
+            pensiun: (2018 - document.getElementById("tanggallahir").value.slice(0,4)) - 55,
+            kota: document.getElementById("city").value,
+            zodiak: function(){
+                if(this.tanggal>=20 && this.bulan=='Maret' || this.tanggal<=20 && this.bulan=="April"){
+                    return 'Aries'
+                }
+                else if(this.tanggal>=20 && this.bulan=="April" || this.tanggal<=20 && this.bulan=="Mei"){
+                    return 'Taurus'
+                }
+                else if(this.tanggal>=21 && this.bulan=='Mei'|| this.tanggal<=20 && this.bulan=='Juni'){
+        return 'Gemini'
+    }
+    else if(this.tanggal>=21 && this.bulan=='Juni'|| this.tanggal<=22 && this.bulan=='Juli'){
+        return 'Cancer'
+    }
+    else if(this.tanggal>=23 && this.bulan=='Juli'|| this.tanggal<=22 && this.bulan=='Agustus'){
+        return 'Leo'
+    }
+    else if(this.tanggal>=23 && this.bulan=='Agustus'|| this.tanggal<=22 && this.bulan=='September'){
+        return 'Virgo'
+    }
+    else if(this.tanggal>=23 && this.bulan=='September'|| this.tanggal<=22 && this.bulan=='Oktober'){
+        return 'Libra'
+    }
+    else if(this.tanggal>=23 && this.bulan=='Oktober'|| this.tanggal<=21 && this.bulan=='November'){
+        return 'Scorpio'
+    }
+    else if(this.tanggal>=22 && this.bulan=='November'|| this.tanggal<=21 && this.bulan=='Desember'){
+        return 'Sagitarius'
+   
+    }
+    else if(this.tanggal>=22 && this.bulan=='Desember'|| this.tanggal<=19 && this.bulan=='Januari'){
+        return 'Capricorn'
+   
+    }
+    else if(this.tanggal>=21 && this.bulan=='Januari'|| this.tanggal<=18 && this.bulan=='Februari'){
+        return 'Aquarius'
+   
+    }
+    else if(this.tanggal>=19 && this.bulan=='Februari'|| this.tanggal<=20 && this.bulan=='Maret'){
+        return 'Pisces'
+   
+    }
+               
+              
+            
+        }
+    }
+        users.push(datauser)
+        
+document.getElementById("thead").innerHTML = '<tr><th>Nama</th><th colspan="3"> Tanggal</th><th>Zodiak</th><th>Usia</th><th>Pensiun</th><th>Kota</th><th>Hapus</th>';
+document.getElementById("tbody").innerHTML = '';
+for (var i=0; i<users.length; i++){
+    document.getElementById("tbody").innerHTML += '<tr><th>'+users[i].nama+'</th><th>'+ users[i].tanggal+'</th><th>'+users[i].bulan+'</th><th>'+ users[i].tanggallahir+'</th><th>'+users[i].zodiak()+'</th><th>'+ users[i].usia+'</th><th>'+users[i].pensiun+'</th><th>'+ users[i].kota+'</th><th>'+'<input id="i" type="button" onclick="hapusdata()" value="Delete">'    
+        
+        
+        
+       
+}
+    
+}
+                
+               
+            
+    
+
+    
+
+</script>
+
+</html>
